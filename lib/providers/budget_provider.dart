@@ -9,8 +9,16 @@ class BudgetNotifier extends ChangeNotifier {
 
   List<Weekend> get weekends => _weekends;
 
-  double get totalSpent =>
-      _weekends.fold(0.0, (sum, weekend) => sum + weekend.totalSpent);
+  Map<String, double> get totalSpentByCurrency {
+    final Map<String, double> totals = {};
+    for (var weekend in _weekends) {
+      for (var expense in weekend.expenses) {
+        totals[expense.currency] =
+            (totals[expense.currency] ?? 0.0) + expense.amount;
+      }
+    }
+    return totals;
+  }
 
   void addWeekend(Weekend weekend) {
     LocalStorageService.saveWeekend(weekend);
@@ -21,6 +29,15 @@ class BudgetNotifier extends ChangeNotifier {
   void removeWeekend(Weekend weekend) {
     _weekends.remove(weekend);
     notifyListeners();
+  }
+
+  void editWeekend(Weekend oldWeekend, Weekend newWeekend) {
+    final index = _weekends.indexOf(oldWeekend);
+    if (index != -1) {
+      _weekends[index] = newWeekend;
+      LocalStorageService.saveWeekend(newWeekend);
+      notifyListeners();
+    }
   }
 
   void addExpense(String weekendId, Expense expense) {

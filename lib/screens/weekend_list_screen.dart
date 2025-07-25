@@ -13,15 +13,27 @@ class WeekendsListScreen extends StatelessWidget {
         id: '1',
         title: 'July 12-13, 2025',
         expenses: [
-          Expense(name: 'Lunch', amount: 20.5, currency: 'USD'),
-          Expense(name: 'Drinks', amount: 12.0, currency: 'USD'),
+          Expense(
+              name: 'Lunch',
+              amount: 20.5,
+              currency: 'USD',
+              date: DateTime(2025, 7, 12)),
+          Expense(
+              name: 'Drinks',
+              amount: 12.0,
+              currency: 'USD',
+              date: DateTime(2025, 7, 12)),
         ],
       ),
       Weekend(
         id: '2',
         title: 'July 19-20, 2025',
         expenses: [
-          Expense(name: 'Beach Trip', amount: 45.0, currency: 'EUR'),
+          Expense(
+              name: 'Beach Trip',
+              amount: 45.0,
+              currency: 'EUR',
+              date: DateTime(2025, 7, 19)),
         ],
       ),
     ];
@@ -36,8 +48,18 @@ class WeekendsListScreen extends StatelessWidget {
           final weekend = weekends[index];
           return ListTile(
             title: Text(weekend.title),
-            subtitle:
-                Text('Total Spent: ${weekend.totalSpent.toStringAsFixed(2)}'),
+            subtitle: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: weekend.totalSpentPerCurrency.entries.map((entry) {
+                return Text(
+                  '${entry.key}: ${entry.value}',
+                  style: const TextStyle(
+                    color: Colors.blueGrey,
+                    fontWeight: FontWeight.bold,
+                  ),
+                );
+              }).toList(),
+            ),
             trailing: const Icon(Icons.arrow_forward_ios),
             onTap: () {
               Navigator.push(

@@ -16,5 +16,17 @@ class Weekend extends HiveObject {
 
   Weekend({required this.id, required this.title, required this.expenses});
 
-  double get totalSpent => expenses.fold(0.0, (sum, e) => sum + e.amount);
+  Map<String, String> get totalSpentPerCurrency {
+    final totals = <String, double>{};
+
+    for (var expense in expenses) {
+      totals.update(
+        expense.currency,
+        (value) => value + expense.amount,
+        ifAbsent: () => expense.amount,
+      );
+    }
+
+    return totals.map((key, value) => MapEntry(key, value.toStringAsFixed(2)));
+  }
 }

@@ -13,5 +13,13 @@ class Expense extends HiveObject {
   @HiveField(2)
   String currency;
 
-  Expense({required this.name, required this.amount, required this.currency});
+  @HiveField(3)
+  DateTime date;
+
+  Expense({
+    required this.name,
+    required this.amount,
+    required this.currency,
+    DateTime? date,
+  }) : date = date ?? DateTime.now();
 }

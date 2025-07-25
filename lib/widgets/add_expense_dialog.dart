@@ -97,8 +97,11 @@ class _AddExpenseDialogState extends State<AddExpenseDialog> {
               ));
             }
 
-            final expense =
-                Expense(name: name, amount: amount, currency: currency);
+            final expense = Expense(
+                name: name,
+                amount: amount,
+                currency: currency,
+                date: DateTime.now());
 
             try {
               budgetNotifier.addExpense(widget.weekendId, expense);
