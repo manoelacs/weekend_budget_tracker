@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../models/weekend.dart';
-import '../models/expense.dart';
+import '../../models/weekend.dart';
+import '../../models/expense.dart';
 import 'details_screen.dart';
 
 class WeekendsListScreen extends StatelessWidget {
@@ -13,12 +13,12 @@ class WeekendsListScreen extends StatelessWidget {
         id: '1',
         title: 'July 12-13, 2025',
         expenses: [
-          Expense(
+          WeekendExpense(
               name: 'Lunch',
               amount: 20.5,
               currency: 'USD',
               date: DateTime(2025, 7, 12)),
-          Expense(
+          WeekendExpense(
               name: 'Drinks',
               amount: 12.0,
               currency: 'USD',
@@ -29,7 +29,7 @@ class WeekendsListScreen extends StatelessWidget {
         id: '2',
         title: 'July 19-20, 2025',
         expenses: [
-          Expense(
+          WeekendExpense(
               name: 'Beach Trip',
               amount: 45.0,
               currency: 'EUR',

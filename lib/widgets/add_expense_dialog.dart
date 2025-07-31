@@ -97,7 +97,7 @@ class _AddExpenseDialogState extends State<AddExpenseDialog> {
               ));
             }
 
-            final expense = Expense(
+            final expense = WeekendExpense(
                 name: name,
                 amount: amount,
                 currency: currency,

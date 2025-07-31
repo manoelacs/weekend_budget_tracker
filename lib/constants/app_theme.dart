@@ -29,3 +29,33 @@ class AppTheme {
     );
   }
 }
+
+final ThemeData weekendTheme = ThemeData(
+  primarySwatch: Colors.blue,
+  scaffoldBackgroundColor: Colors.blue[50],
+  appBarTheme: AppBarTheme(
+    backgroundColor: Colors.blue[800],
+    titleTextStyle: const TextStyle(color: Colors.white, fontSize: 20),
+  ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      backgroundColor: Colors.blue[600],
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+    ),
+  ),
+);
+
+final ThemeData budgetTheme = ThemeData(
+  primarySwatch: Colors.green,
+  scaffoldBackgroundColor: Colors.green[50],
+  appBarTheme: AppBarTheme(
+    backgroundColor: Colors.green[800],
+    titleTextStyle: const TextStyle(color: Colors.white, fontSize: 20),
+  ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      backgroundColor: Colors.green[600],
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+    ),
+  ),
+);

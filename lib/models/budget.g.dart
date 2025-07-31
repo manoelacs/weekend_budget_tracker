@@ -1,37 +1,40 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'weekend.dart';
+part of 'budget.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class WeekendAdapter extends TypeAdapter<Weekend> {
+class BudgetAdapter extends TypeAdapter<Budget> {
   @override
-  final int typeId = 1;
+  final int typeId = 2;
 
   @override
-  Weekend read(BinaryReader reader) {
+  Budget read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return Weekend(
+    return Budget(
       id: fields[0] as String,
       title: fields[1] as String,
-      expenses: (fields[2] as List).cast<WeekendExpense>(),
+      totalAmount: fields[2] as double,
+      expenses: (fields[3] as List).cast<BudgetExpense>(),
     );
   }
 
   @override
-  void write(BinaryWriter writer, Weekend obj) {
+  void write(BinaryWriter writer, Budget obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
       ..write(obj.title)
       ..writeByte(2)
+      ..write(obj.totalAmount)
+      ..writeByte(3)
       ..write(obj.expenses);
   }
 
@@ -41,7 +44,7 @@ class WeekendAdapter extends TypeAdapter<Weekend> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is WeekendAdapter &&
+      other is BudgetAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

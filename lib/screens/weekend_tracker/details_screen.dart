@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../models/weekend.dart';
-import '../models/expense.dart';
+import '../../models/weekend.dart';
+import '../../models/expense.dart';
 
 class WeekendDetailScreen extends StatelessWidget {
   final Weekend weekend;

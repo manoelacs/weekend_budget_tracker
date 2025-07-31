@@ -12,7 +12,7 @@ class Weekend extends HiveObject {
   String title;
 
   @HiveField(2)
-  List<Expense> expenses;
+  List<WeekendExpense> expenses;
 
   Weekend({required this.id, required this.title, required this.expenses});
 

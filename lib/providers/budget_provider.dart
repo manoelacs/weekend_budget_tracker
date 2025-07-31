@@ -40,7 +40,7 @@ class BudgetNotifier extends ChangeNotifier {
     }
   }
 
-  void addExpense(String weekendId, Expense expense) {
+  void addExpense(String weekendId, WeekendExpense expense) {
     final index = _weekends.indexWhere((w) => w.id == weekendId);
     if (index != -1) {
       _weekends[index].expenses.add(expense);
@@ -49,7 +49,7 @@ class BudgetNotifier extends ChangeNotifier {
     }
   }
 
-  void removeExpense(String weekendId, Expense expense) {
+  void removeExpense(String weekendId, WeekendExpense expense) {
     final index = _weekends.indexWhere((w) => w.id == weekendId);
     if (index != -1) {
       _weekends[index].expenses.remove(expense);
@@ -58,7 +58,8 @@ class BudgetNotifier extends ChangeNotifier {
     }
   }
 
-  void editExpense(String weekendId, Expense oldExpense, Expense newExpense) {
+  void editExpense(
+      String weekendId, WeekendExpense oldExpense, WeekendExpense newExpense) {
     final index = _weekends.indexWhere((w) => w.id == weekendId);
     if (index != -1) {
       final expenses = _weekends[index].expenses;

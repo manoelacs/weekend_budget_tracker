@@ -21,11 +21,11 @@
 ## Build Runner Commands
 - **Generate `.g.dart` files**:
   ```bash
-  flutter pub run build_runner build --delete-conflicting-outputs
+  dart run build_runner build --delete-conflicting-outputs
   ```
 - **Watch for changes and regenerate files**:
   ```bash
-  flutter pub run build_runner watch --delete-conflicting-outputs
+  dart run build_runner watch --delete-conflicting-outputs
   ```
 
 ## Testing Commands

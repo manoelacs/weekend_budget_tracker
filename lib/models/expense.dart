@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:hive/hive.dart';
 
 part 'expense.g.dart';
@@ -5,15 +7,19 @@ part 'expense.g.dart';
 @HiveType(typeId: 0)
 class Expense extends HiveObject {
   @HiveField(0)
-  String name;
+  final String id = base64Encode(
+      Hive.generateSecureKey()); // Automatically generate a unique ID
 
   @HiveField(1)
-  double amount;
+  String name;
 
   @HiveField(2)
-  String currency;
+  double amount;
 
   @HiveField(3)
+  String currency;
+
+  @HiveField(4)
   DateTime date;
 
   Expense({
@@ -22,4 +28,32 @@ class Expense extends HiveObject {
     required this.currency,
     DateTime? date,
   }) : date = date ?? DateTime.now();
+}
+
+@HiveType(typeId: 1)
+class WeekendExpense extends Expense {
+  WeekendExpense({
+    required super.name,
+    required super.amount,
+    required super.currency,
+    super.date,
+  });
+}
+
+@HiveType(typeId: 2)
+class BudgetExpense extends Expense {
+  @HiveField(5)
+  String category;
+
+  @HiveField(6)
+  String type; // e.g., 'Cash In', 'Cash Out'
+
+  BudgetExpense({
+    required super.name,
+    required super.amount,
+    required super.currency,
+    required this.category,
+    required this.type,
+    super.date,
+  });
 }
